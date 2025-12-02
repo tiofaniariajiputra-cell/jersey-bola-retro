@@ -62,7 +62,7 @@ export default async function ProductsPage({
                 >
                   Semua
                 </Link>
-                {categories.map((cat) => (
+                {categories.map((cat: any) => (
                   <Link
                     key={cat.id}
                     href={`/products?category=${cat.slug}`}
@@ -100,9 +100,9 @@ export default async function ProductsPage({
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {products.map((product) => {
+            {products.map((product: any) => {
               const primaryImage = product.images[0]
-              const totalStock = product.sizes.reduce((sum, size) => sum + size.stock, 0)
+              const totalStock = product.sizes.reduce((sum: number, size: any) => sum + size.stock, 0)
 
               return (
                 <Link
@@ -188,11 +188,11 @@ export default async function ProductsPage({
                       </p>
                       <div className="flex flex-wrap gap-1.5">
                         {product.sizes
-                          .sort((a, b) => {
+                          .sort((a: any, b: any) => {
                             const order = ['S', 'M', 'L', 'XL', 'XXL']
                             return order.indexOf(a.size) - order.indexOf(b.size)
                           })
-                          .map((size) => (
+                          .map((size: any) => (
                             <span
                               key={size.id}
                               className={`text-xs font-bold px-3 py-1.5 rounded-lg border-2 transition ${

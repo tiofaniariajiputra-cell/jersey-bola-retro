@@ -29,9 +29,9 @@ export default async function ProductDetailPage({ params }: Props) {
     notFound()
   }
 
-  const primaryImage = product.images.find((img) => img.isPrimary) || product.images[0]
-  const totalStock = product.sizes.reduce((sum, size) => sum + size.stock, 0)
-  const availableSizes = product.sizes.filter((size) => size.stock > 0)
+  const primaryImage = product.images.find((img: any) => img.isPrimary) || product.images[0]
+  const totalStock = product.sizes.reduce((sum: number, size: any) => sum + size.stock, 0)
+  const availableSizes = product.sizes.filter((size: any) => size.stock > 0)
 
   const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '62xxx'
   const whatsappMessage = encodeURIComponent(
@@ -78,7 +78,7 @@ export default async function ProductDetailPage({ params }: Props) {
               {/* Thumbnail Images */}
               {product.images.length > 1 && (
                 <div className="grid grid-cols-4 gap-2">
-                  {product.images.map((image) => (
+                  {product.images.map((image: any) => (
                     <div
                       key={image.id}
                       className="relative h-20 bg-gray-200 rounded-lg overflow-hidden cursor-pointer hover:opacity-75 transition"
@@ -142,7 +142,7 @@ export default async function ProductDetailPage({ params }: Props) {
                   <div>
                     <p className="text-sm text-gray-600 mb-2">Ukuran tersedia:</p>
                     <div className="flex flex-wrap gap-2">
-                      {product.sizes.map((size) => (
+                      {product.sizes.map((size: any) => (
                         <div
                           key={size.id}
                           className={`px-4 py-2 rounded-lg border-2 text-sm font-semibold ${
