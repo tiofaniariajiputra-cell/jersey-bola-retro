@@ -10,6 +10,9 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ categories })
   } catch (error: any) {
     console.error('Get categories error:', error)
+    if (error?.message?.includes("Can't reach database server") || error?.name === 'PrismaClientInitializationError') {
+      return NextResponse.json({ categories: [] })
+    }
     return NextResponse.json({ error: error.message }, { status: 500 })
   }
 }
